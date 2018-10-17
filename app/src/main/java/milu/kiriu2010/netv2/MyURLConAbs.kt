@@ -11,6 +11,7 @@ import java.net.*
 // ver 0.0.1 2018.08.28  no cache
 // ver 0.0.2 2018.09.03  GET parameter
 // ver 0.0.3 2018.09.14  redirect
+// ver 0.0.4 2018.10.12  doPost(method)
 // ---------------------------------------
 // =======================================
 abstract class MyURLConAbs: Cloneable {
@@ -222,7 +223,7 @@ abstract class MyURLConAbs: Cloneable {
     }
 
     @Throws(ConnectException::class,IOException::class)
-    fun doPost() {
+    fun doPost(method: String = "POST") {
         val con = this.conAbs as? HttpURLConnection ?: return
 
         // クリア
@@ -277,7 +278,7 @@ abstract class MyURLConAbs: Cloneable {
         // URLConnectionではなく
         // HttpURLConnectionである必要がある
         // -------------------------------------
-        con.setRequestMethod("POST")
+        con.setRequestMethod(method)
 
         // -------------------------------------
         // 接続
