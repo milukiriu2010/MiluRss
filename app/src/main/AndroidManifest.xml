@@ -12,13 +12,14 @@
     -->
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/rss"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".each.RssEachActivity" />
+        <!-- android:icon="@mipmap/ic_launcher" -->
+        <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
 
         <service
             android:name="milu.kiriu2010.job.PollingJob"
