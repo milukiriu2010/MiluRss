@@ -1,7 +1,7 @@
 package milu.kiriu2010.milurssviewer.main
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ class GenreLstAdapter(
         private val genreDataLst: MutableList<GenreData> = mutableListOf<GenreData>(),
         // アイテムをクリックすると呼ばれる
         private val onItemClick: (GenreData) -> Unit )
-    : RecyclerView.Adapter<GenreLstAdapter.GenreViewHolder>() {
+    : androidx.recyclerview.widget.RecyclerView.Adapter<GenreLstAdapter.GenreViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -39,7 +39,7 @@ class GenreLstAdapter(
         holder.labelGenre.text = genreData.genre
     }
 
-    class GenreViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class GenreViewHolder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val labelGenre = view.findViewById<TextView>(R.id.labelGenre)
     }
 }

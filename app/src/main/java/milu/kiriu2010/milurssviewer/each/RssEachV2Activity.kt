@@ -1,9 +1,9 @@
 package milu.kiriu2010.milurssviewer.each
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.Loader
 import android.util.Log
 import android.view.MenuItem
 import milu.kiriu2010.entity.Rss
@@ -17,7 +17,7 @@ import milu.kiriu2010.milurssviewer.R
 import java.io.IOException
 import java.text.ParseException
 
-class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<AsyncResult<Rss>> {
+class RssEachV2Activity : AppCompatActivity(), androidx.loader.app.LoaderManager.LoaderCallbacks<AsyncResult<Rss>> {
 
     // ------------------------------------------------------
     // この画面が生成される際、呼び出される
@@ -35,7 +35,9 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
         val urlData = intent.getParcelableExtra<URLData>(IntentID.KEY_RSS_EACH.id)
 
         Log.d( javaClass.simpleName, "====================================" )
-        Log.d( javaClass.simpleName, "urlData[" + urlData.url.toString() + "]" )
+        urlData?.let {
+            Log.d( javaClass.simpleName, "urlData[" + it.url.toString() + "]" )
+        }
 
         // ローダに渡すURL情報の箱を生成
         val bundle = Bundle()
@@ -70,8 +72,8 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
         Log.d( javaClass.simpleName, "onPause" )
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             // 前の画面へ戻る
             android.R.id.home -> {
                 finish()
@@ -98,7 +100,7 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
     // 非同期処理を行うLoaderを生成する
     // getLoaderManager().initLoaderで一回のみ呼び出される
     // ----------------------------------------------------
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<AsyncResult<Rss>> {
+    override fun onCreateLoader(id: Int, args: Bundle?): androidx.loader.content.Loader<AsyncResult<Rss>> {
         Log.d( javaClass.simpleName, "" )
         Log.d( javaClass.simpleName, "orCreateLoader" )
         Log.d( javaClass.simpleName, "====================================" )
@@ -118,7 +120,7 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
     // ---------------------------------------------------
     // 非同期処理終了
     // ---------------------------------------------------
-    override fun onLoadFinished(loader: Loader<AsyncResult<Rss>>, data: AsyncResult<Rss>?) {
+    override fun onLoadFinished(loader: androidx.loader.content.Loader<AsyncResult<Rss>>, data: AsyncResult<Rss>?) {
         Log.d(javaClass.simpleName, "" )
         Log.d(javaClass.simpleName, "onLoadFinished" )
         Log.d(javaClass.simpleName, "==============" )
@@ -160,7 +162,7 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
 
     // LoaderManager.LoaderCallbacks
     // ローダがリセットされたときに呼ばれる
-    override fun onLoaderReset(loader: Loader<AsyncResult<Rss>>) {
+    override fun onLoaderReset(loader: androidx.loader.content.Loader<AsyncResult<Rss>>) {
         Log.d(javaClass.simpleName, "onLoadReset" )
     }
 }

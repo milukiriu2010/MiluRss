@@ -3,7 +3,7 @@ package milu.kiriu2010.entity
 import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.v4.content.AsyncTaskLoader
+import androidx.loader.content.AsyncTaskLoader
 import android.util.Log
 import milu.kiriu2010.net.httpGet
 import org.w3c.dom.NodeList
@@ -48,7 +48,11 @@ data class Article( val title: String, val link: String, val pubDate: Date ): Pa
 }
 
 // RSSを表現するデータクラス
-data class Rss( var title: String = "", var pubDate: Date = Date(), val articles: MutableList<Article> = mutableListOf() ): Parcelable {
+data class Rss(
+        var title: String = "",
+        var pubDate: Date = Date(),
+        val articles: MutableList<Article> = mutableListOf()
+): Parcelable {
     constructor(parcel: Parcel) : this(
             // title
             parcel.readString()  ?: "",
@@ -62,7 +66,7 @@ data class Rss( var title: String = "", var pubDate: Date = Date(), val articles
         dest?.let {
             it.writeString(title)
             it.writeLong(pubDate.time)
-            it.writeList(articles)
+            it.writeList(articles as List<Article>)
         }
     }
 

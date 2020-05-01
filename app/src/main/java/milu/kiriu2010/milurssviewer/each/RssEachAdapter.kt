@@ -1,7 +1,7 @@
 package milu.kiriu2010.milurssviewer.each
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ class RssEachAdapter(
         private val context: Context,
         private val articleLst: MutableList<Article> = mutableListOf<Article>(),
         private val onArticleClicked: (Article) -> Unit
-): RecyclerView.Adapter<RssEachAdapter.RssEachViewHolder>() {
+): androidx.recyclerview.widget.RecyclerView.Adapter<RssEachAdapter.RssEachViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -43,7 +43,7 @@ class RssEachAdapter(
         holder.lblPubDate.text = context.getString(R.string.LABEL_PUB_DATE,article.pubDate)
     }
 
-    class RssEachViewHolder( view: View): RecyclerView.ViewHolder(view) {
+    class RssEachViewHolder( view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val lblTitle = view.findViewById<TextView>(R.id.lblTitle)
         val lblPubDate = view.findViewById<TextView>(R.id.lblPubDate)
     }

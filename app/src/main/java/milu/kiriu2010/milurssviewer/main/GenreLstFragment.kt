@@ -2,10 +2,10 @@ package milu.kiriu2010.milurssviewer.main
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +14,8 @@ import android.widget.TextView
 import milu.kiriu2010.entity.GenreData
 import milu.kiriu2010.milurssviewer.R
 
-class GenreLstFragment: Fragment() {
-    private lateinit var recyclerView: RecyclerView
+class GenreLstFragment: androidx.fragment.app.Fragment() {
+    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
 
     // ジャンルをタップしたときのコールバックインターフェース
     interface OnGenreSelectListener {
@@ -25,7 +25,7 @@ class GenreLstFragment: Fragment() {
     // ---------------------------------------------------------
     // このフラグメントがアクティビティに配置されたとき呼ばれる
     // ---------------------------------------------------------
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
 
         Log.d( javaClass.simpleName, "" )
@@ -51,7 +51,7 @@ class GenreLstFragment: Fragment() {
         recyclerView = view.findViewById(R.id.rvGenre)
 
         // ジャンルリストを縦方向に並べて表示
-        val layoutManager = LinearLayoutManager( context, LinearLayoutManager.VERTICAL, false )
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
         // コンテキストのnullチェック
@@ -67,7 +67,7 @@ class GenreLstFragment: Fragment() {
 
         // 区切り線を入れる
         // https://qiita.com/morimonn/items/035b1d85fec56e64f3e1
-        val itemDecoration = DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL )
+        val itemDecoration = androidx.recyclerview.widget.DividerItemDecoration(ctx, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(itemDecoration)
 
         return view

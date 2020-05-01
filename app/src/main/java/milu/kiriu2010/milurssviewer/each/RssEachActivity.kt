@@ -5,14 +5,14 @@ import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.customtabs.CustomTabsIntent
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.Loader
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +30,8 @@ import milu.kiriu2010.job.createChannel
 import milu.kiriu2010.milurssviewer.R
 import java.util.concurrent.TimeUnit
 
-class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> {
+class RssEachActivity : AppCompatActivity(),
+        LoaderManager.LoaderCallbacks<Rss> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rss_each)
@@ -42,7 +43,9 @@ class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> 
         val urlData = intent.getParcelableExtra<URLData>(IntentID.KEY_RSS_EACH.id)
 
         Log.d( javaClass.simpleName, "" )
-        Log.d( javaClass.simpleName, "urlData[" + urlData.url.toString() + "]" )
+        urlData?.let {
+            Log.d( javaClass.simpleName, "urlData[" + it.url.toString() + "]" )
+        }
         Log.d( javaClass.simpleName, "====================================" )
 
         // deprecated
@@ -80,7 +83,7 @@ class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> 
     // 非同期処理を行うLoaderを生成する
     // getLoaderManager().initLoaderで一回のみ呼び出される
     // ---------------------------------------
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Rss> {
+    override fun onCreateLoader(id: Int, args: Bundle?): androidx.loader.content.Loader<Rss> {
         Log.d( javaClass.simpleName, "" )
         Log.d( javaClass.simpleName, "orCreateLoader" )
         Log.d( javaClass.simpleName, "====================================" )
@@ -96,7 +99,7 @@ class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> 
     }
 
     // LoaderManager.LoaderCallbacks<Rss>
-    override fun onLoadFinished(loader: Loader<Rss>, data: Rss?) {
+    override fun onLoadFinished(loader: androidx.loader.content.Loader<Rss>, data: Rss?) {
         Log.d( javaClass.simpleName, "" )
         Log.d( javaClass.simpleName, "orLoadFInished" )
         Log.d( javaClass.simpleName, "====================================" )
@@ -113,18 +116,18 @@ class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> 
         recyclerView.adapter = adapter
 
         // グリッドを表示するレイアウトマネージャ
-        val layoutManager = GridLayoutManager(this, 2)
+        val layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 2)
         recyclerView.layoutManager = layoutManager
 
         // 区切り線を入れる
         // https://qiita.com/morimonn/items/035b1d85fec56e64f3e1
-        val itemDecoration = DividerItemDecoration( this, DividerItemDecoration.VERTICAL  or DividerItemDecoration.HORIZONTAL )
+        val itemDecoration = androidx.recyclerview.widget.DividerItemDecoration(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL or androidx.recyclerview.widget.DividerItemDecoration.HORIZONTAL)
         recyclerView.addItemDecoration(itemDecoration)
     }
 
     // LoaderManager.LoaderCallbacks<Rss>
     // ローダがリセットされたときに呼ばれる
-    override fun onLoaderReset(loader: Loader<Rss>) {
+    override fun onLoaderReset(loader: androidx.loader.content.Loader<Rss>) {
         Log.d( javaClass.simpleName, "====================================" )
         Log.d( javaClass.simpleName, "orLoaderReset" )
         Log.d( javaClass.simpleName, "====================================" )
@@ -134,7 +137,7 @@ class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> 
             private val context: Context,
             private val articleLst: MutableList<Article> = mutableListOf<Article>(),
             private val onArticleClicked: (Article) -> Unit
-    ): RecyclerView.Adapter<RssEachAdapter.RssEachViewHolder>() {
+    ): androidx.recyclerview.widget.RecyclerView.Adapter<RssEachAdapter.RssEachViewHolder>() {
 
         private val inflater = LayoutInflater.from(context)
 
@@ -164,7 +167,7 @@ class RssEachActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Rss> 
             holder.lblPubDate.text = context.getString(R.string.LABEL_PUB_DATE,article.pubDate)
         }
 
-        class RssEachViewHolder( view: View): RecyclerView.ViewHolder(view) {
+        class RssEachViewHolder( view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
             val lblTitle = view.findViewById<TextView>(R.id.lblTitle)
             val lblPubDate = view.findViewById<TextView>(R.id.lblPubDate)
         }

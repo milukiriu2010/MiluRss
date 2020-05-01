@@ -1,7 +1,7 @@
 package milu.kiriu2010.milurssviewer.main
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ class URLLstAdapter(
         private val urlDataLst: MutableList<URLData> = mutableListOf<URLData>(),
         // アイテムをクリックすると呼ばれる
         private val onItemClick: (URLData) -> Unit )
-    : RecyclerView.Adapter<URLLstAdapter.URLViewHolder>() {
+    : androidx.recyclerview.widget.RecyclerView.Adapter<URLLstAdapter.URLViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -40,7 +40,7 @@ class URLLstAdapter(
         holder.labelURL.text = urlData.url.toString()
     }
 
-    class URLViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class URLViewHolder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val labelTitle = view.findViewById<TextView>(R.id.labelTitle)
         val labelURL  = view.findViewById<TextView>(R.id.labelURL)
     }

@@ -3,9 +3,9 @@ package milu.kiriu2010.milurssviewer.each
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.support.customtabs.CustomTabsIntent
-import android.support.v4.app.Fragment
-import android.support.v7.widget.*
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.fragment.app.Fragment
+import androidx.appcompat.widget.*
 import android.util.Log
 import android.view.*
 import android.widget.TextView
@@ -15,16 +15,16 @@ import milu.kiriu2010.id.BundleID
 import milu.kiriu2010.milurssviewer.R
 import java.text.SimpleDateFormat
 
-class RssEachFragment: Fragment() {
+class RssEachFragment: androidx.fragment.app.Fragment() {
     // RSSコンテンツを表示するリサイクラービュー
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
 
     // RSSコンテンツ
     private lateinit var rss: Rss
 
     // Rssの記事一覧を表示するフラグメントを生成
     companion object {
-        fun newInstance(rss: Rss): Fragment {
+        fun newInstance(rss: Rss): androidx.fragment.app.Fragment {
             val fragmentRssEach = RssEachFragment()
 
             // Rss記事フラグメントに渡すデータをセット
@@ -39,7 +39,7 @@ class RssEachFragment: Fragment() {
     // ---------------------------------------------------------
     // このフラグメントがアクティビティに配置されたとき呼ばれる
     // ---------------------------------------------------------
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(javaClass.simpleName, "onAttach")
     }
@@ -86,7 +86,7 @@ class RssEachFragment: Fragment() {
         recyclerView = view.findViewById(R.id.rvRssEach)
 
         // RSS記事一覧をグリッドで並べる
-        val layoutManager = GridLayoutManager(context, 2)
+        val layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
         recyclerView.layoutManager = layoutManager
 
         // コンテキストのnullチェック
@@ -125,31 +125,31 @@ class RssEachFragment: Fragment() {
     }
 
     // オプションメニューを表示
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu_rss_each, menu)
+        inflater.inflate(R.menu.menu_rss_each, menu)
 
         // デフォルトチェックを入れたいがうまく動かない
         //val menuItemGrid = menu?.findItem(R.id.menuItemGrid)
         //menuItemGrid?.isCheckable = true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        return when (item?.itemId) {
+        return when (item.itemId) {
             R.id.menuItemLinear -> {
                 item.isChecked = true
-                recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+                recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
                 true
             }
             R.id.menuItemGrid -> {
                 item.isChecked = true
-                recyclerView.layoutManager = GridLayoutManager(context,2)
+                recyclerView.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
                 true
             }
             R.id.menuItemStaggered -> {
                 item.isChecked = true
-                recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+                recyclerView.layoutManager = androidx.recyclerview.widget.StaggeredGridLayoutManager(2, androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL)
                 true
             }
             else -> super.onOptionsItemSelected(item)

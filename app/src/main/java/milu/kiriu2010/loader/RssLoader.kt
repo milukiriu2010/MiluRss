@@ -1,7 +1,7 @@
 package milu.kiriu2010.loader
 
 import android.content.Context
-import android.support.v4.content.AsyncTaskLoader
+import androidx.loader.content.AsyncTaskLoader
 import android.util.Log
 import milu.kiriu2010.entity.Rss
 import milu.kiriu2010.entity.URLData
@@ -10,14 +10,19 @@ import milu.kiriu2010.net.httpGet
 
 
 // RSSフィードをダウンロードしてRssオブジェクトを返すローダー
-class RssLoader(context: Context, val urlData: URLData? ) : AsyncTaskLoader<Rss>(context) {
+class RssLoader(
+        context: Context,
+        val urlData: URLData?
+) : AsyncTaskLoader<Rss>(context) {
 
     private var cache : Rss? = null
 
     // このローダーがバックグラウンドで行う処理
     override fun loadInBackground(): Rss? {
         Log.d( javaClass.simpleName, "========================" )
-        Log.d( javaClass.simpleName, urlData?.url?.toString() )
+        urlData?.url?.let {
+            Log.d( javaClass.simpleName, it.toString() )
+        }
         Log.d( javaClass.simpleName, "========================" )
         val strURL = urlData?.url?.toString() ?: return null
 
