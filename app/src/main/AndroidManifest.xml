@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".each.RssEachActivity" />
         <!-- android:icon="@mipmap/ic_launcher" -->
         <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
 
@@ -32,7 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".each.RssEachV2Activity"></activity>
+        <activity android:name=".each.RssEachActivity" />
+        <activity android:name=".each.RssEachV2Activity" />
     </application>
 
 </manifest>

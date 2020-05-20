@@ -98,7 +98,7 @@ class MyRssParseRss2M0N11: MyRssParseRssAbs() {
             }
             catch ( parseEx1: ParseException) {
                 try {
-                    itemPubDate = formatterRFC1123.parse(itemPubDateNode?.nodeValue)
+                    itemPubDate = formatterRFC1123.parse(itemPubDateNode?.nodeValue!!)!!
                 }
                 catch ( parseEx2: ParseException ) {
 

@@ -10,15 +10,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import milu.kiriu2010.entity.GenreData
 import milu.kiriu2010.entity.URLData
 import milu.kiriu2010.id.BundleID
 import milu.kiriu2010.milurssviewer.R
 import java.net.URL
 
-class URLLstFragment: androidx.fragment.app.Fragment() {
-    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
+// URL一覧を表示するフラグメント
+class URLLstFragment: Fragment() {
+    private lateinit var recyclerView: RecyclerView
 
     private lateinit var genreData: GenreData
 
@@ -31,7 +31,8 @@ class URLLstFragment: androidx.fragment.app.Fragment() {
     // URL一覧フラグメントを生成
     // ---------------------------------------------------------
     companion object {
-        fun newInstance( genreData: GenreData = GenreData( 1, "2ch" ) ): androidx.fragment.app.Fragment {
+        // 2chをデフォルト表示するジャンルとしている
+        fun newInstance( genreData: GenreData = GenreData( 1, "2ch" ) ): Fragment {
             val fragmentURLLst = URLLstFragment()
 
             // URL一覧フラグメントに渡すデータをセット
@@ -86,7 +87,7 @@ class URLLstFragment: androidx.fragment.app.Fragment() {
         recyclerView = view.findViewById(R.id.rvURL)
 
         // URL一覧を縦方向に並べて表示
-        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
         // コンテキストのnullチェック
@@ -96,13 +97,16 @@ class URLLstFragment: androidx.fragment.app.Fragment() {
         val adapter = URLLstAdapter( ctx, loadURLData() ) { urlData ->
             // タップされたらコールバックを呼ぶ
             // コールバックにタップされたURLDataオブジェクトを渡す
-            ( ctx as OnURLSelectListener).onSelectedURL(urlData)
+            // ------------------------------------------
+            // つまるところ、このフラグメントの親Activityである
+            // URLLstActivityを呼び足している
+            ( ctx as OnURLSelectListener ).onSelectedURL(urlData)
         }
         recyclerView.adapter = adapter
 
         // 区切り線を入れる
         // https://qiita.com/morimonn/items/035b1d85fec56e64f3e1
-        val itemDecoration = androidx.recyclerview.widget.DividerItemDecoration(ctx, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL)
+        val itemDecoration = DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(itemDecoration)
 
         return view
@@ -114,7 +118,7 @@ class URLLstFragment: androidx.fragment.app.Fragment() {
     }
 
     private fun loadURLData(): MutableList<URLData> {
-        val urlLst: MutableList<URLData> = mutableListOf<URLData>()
+        val urlLst: MutableList<URLData> = mutableListOf()
 
         // RSS 1.0
         // 2ch

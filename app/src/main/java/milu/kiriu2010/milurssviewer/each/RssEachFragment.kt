@@ -85,8 +85,10 @@ class RssEachFragment: androidx.fragment.app.Fragment() {
         // RSS記事一覧
         recyclerView = view.findViewById(R.id.rvRssEach)
 
-        // RSS記事一覧をグリッドで並べる
-        val layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
+        // RSS記事一覧を2列で並べる
+        //val layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
+        // RSS記事一覧を1列で並べる
+        val layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 1)
         recyclerView.layoutManager = layoutManager
 
         // コンテキストのnullチェック

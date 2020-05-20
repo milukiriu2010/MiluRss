@@ -13,6 +13,7 @@ import javax.xml.xpath.XPathExpressionException
 import javax.xml.xpath.XPathFactory
 
 // 2018.09.14 evaluateでNodeが見つからない場合nullを返却するように変更
+// 2020.05.20 minSdkVersion 28に伴う修正
 class MyXMLParse {
     @Throws(ParserConfigurationException::class, IOException::class, SAXException::class)
     fun str2doc(strXML: String): Document {
@@ -32,7 +33,7 @@ class MyXMLParse {
         val xPath = xPathFactory.newXPath()
         val xPathExpr = xPath.compile(strPath)
 
-        return xPathExpr.evaluate(node, XPathConstants.NODE) as? Node ?: null
+        return xPathExpr.evaluate(node, XPathConstants.NODE) as? Node
     }
 
     @Throws(XPathExpressionException::class)

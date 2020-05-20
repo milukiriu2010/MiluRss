@@ -87,7 +87,7 @@ class MyRssParse {
             val article = Article(
                     itemTitleNode!!.nodeValue,
                     itemLinkNode!!.nodeValue,
-                    formatter.parse(itemPubDateNode?.nodeValue)
+                    formatter.parse(itemPubDateNode?.nodeValue!!)!!
             )
 
             articles.add(article)
@@ -96,7 +96,7 @@ class MyRssParse {
         // RSSオブジェクトを生成
         val rss = Rss(
                 titleNode!!.nodeValue,
-                pubDate,
+                pubDate!!,
                 articles
         )
 

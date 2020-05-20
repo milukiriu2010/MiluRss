@@ -6,6 +6,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
 import android.util.Log
 import android.view.MenuItem
+import androidx.fragment.app.FragmentActivity
 import milu.kiriu2010.entity.Rss
 import milu.kiriu2010.entity.URLData
 import milu.kiriu2010.gui.common.ExceptionFragment
@@ -17,7 +18,7 @@ import milu.kiriu2010.milurssviewer.R
 import java.io.IOException
 import java.text.ParseException
 
-class RssEachV2Activity : AppCompatActivity(), androidx.loader.app.LoaderManager.LoaderCallbacks<AsyncResult<Rss>> {
+class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<AsyncResult<Rss>> {
 
     // ------------------------------------------------------
     // この画面が生成される際、呼び出される
@@ -44,7 +45,8 @@ class RssEachV2Activity : AppCompatActivity(), androidx.loader.app.LoaderManager
         bundle.putParcelable( IntentID.KEY_URL_DATA.id, urlData )
 
         // RSSを取得するためのローダを初期化する
-        supportLoaderManager.initLoader(LoaderID.ID_RSS_GET.id, bundle, this)
+        //supportLoaderManager.initLoader(LoaderID.ID_RSS_GET.id, bundle, this)
+        LoaderManager.getInstance<FragmentActivity>(this).initLoader(LoaderID.ID_RSS_GET.id, bundle, this)
     }
 
     override fun onDestroy() {
@@ -100,7 +102,7 @@ class RssEachV2Activity : AppCompatActivity(), androidx.loader.app.LoaderManager
     // 非同期処理を行うLoaderを生成する
     // getLoaderManager().initLoaderで一回のみ呼び出される
     // ----------------------------------------------------
-    override fun onCreateLoader(id: Int, args: Bundle?): androidx.loader.content.Loader<AsyncResult<Rss>> {
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<AsyncResult<Rss>> {
         Log.d( javaClass.simpleName, "" )
         Log.d( javaClass.simpleName, "orCreateLoader" )
         Log.d( javaClass.simpleName, "====================================" )
@@ -120,7 +122,7 @@ class RssEachV2Activity : AppCompatActivity(), androidx.loader.app.LoaderManager
     // ---------------------------------------------------
     // 非同期処理終了
     // ---------------------------------------------------
-    override fun onLoadFinished(loader: androidx.loader.content.Loader<AsyncResult<Rss>>, data: AsyncResult<Rss>?) {
+    override fun onLoadFinished(loader: Loader<AsyncResult<Rss>>, data: AsyncResult<Rss>?) {
         Log.d(javaClass.simpleName, "" )
         Log.d(javaClass.simpleName, "onLoadFinished" )
         Log.d(javaClass.simpleName, "==============" )
@@ -162,7 +164,7 @@ class RssEachV2Activity : AppCompatActivity(), androidx.loader.app.LoaderManager
 
     // LoaderManager.LoaderCallbacks
     // ローダがリセットされたときに呼ばれる
-    override fun onLoaderReset(loader: androidx.loader.content.Loader<AsyncResult<Rss>>) {
+    override fun onLoaderReset(loader: Loader<AsyncResult<Rss>>) {
         Log.d(javaClass.simpleName, "onLoadReset" )
     }
 }

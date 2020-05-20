@@ -53,6 +53,7 @@ data class Rss(
         var pubDate: Date = Date(),
         val articles: MutableList<Article> = mutableListOf()
 ): Parcelable {
+    @Suppress("UNCHECKED_CAST")
     constructor(parcel: Parcel) : this(
             // title
             parcel.readString()  ?: "",
@@ -113,14 +114,15 @@ fun parseRss(stream: InputStream) : Rss {
         val article = Article(
                 title = xPath.evaluate("./title/text()", item),
                 link  = xPath.evaluate("./link/text()", item),
-                pubDate = formatter.parse(xPath.evaluate("./pubDate/text()", item)))
+                pubDate = formatter.parse(xPath.evaluate("./pubDate/text()", item))!!
+        )
 
         articles.add(article)
     }
 
     // RSSオブジェクトにまとめて返す
     return Rss(title = xPath.evaluate("/rss/channel/title/text()", doc),
-            pubDate = formatter.parse(xPath.evaluate("/rss/channel/pubDate/text()", doc)),
+            pubDate = formatter.parse(xPath.evaluate("/rss/channel/pubDate/text()", doc))!!,
             articles = articles)
 }
 

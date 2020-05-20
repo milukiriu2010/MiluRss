@@ -12,10 +12,10 @@ import milu.kiriu2010.milurssviewer.R
 class URLLstAdapter(
         context: Context,
         // URL一覧
-        private val urlDataLst: MutableList<URLData> = mutableListOf<URLData>(),
+        private val urlDataLst: MutableList<URLData> = mutableListOf(),
         // アイテムをクリックすると呼ばれる
         private val onItemClick: (URLData) -> Unit )
-    : androidx.recyclerview.widget.RecyclerView.Adapter<URLLstAdapter.URLViewHolder>() {
+    : RecyclerView.Adapter<URLLstAdapter.URLViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -40,7 +40,7 @@ class URLLstAdapter(
         holder.labelURL.text = urlData.url.toString()
     }
 
-    class URLViewHolder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
+    class URLViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val labelTitle = view.findViewById<TextView>(R.id.labelTitle)
         val labelURL  = view.findViewById<TextView>(R.id.labelURL)
     }

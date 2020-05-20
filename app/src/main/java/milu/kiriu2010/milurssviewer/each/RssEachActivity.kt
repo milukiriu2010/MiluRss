@@ -18,6 +18,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.activity_rss_each.*
 import milu.kiriu2010.entity.URLData
 import milu.kiriu2010.entity.Article
@@ -58,7 +59,8 @@ class RssEachActivity : AppCompatActivity(),
         // 引数1:id:なんでもよい
         // 引数2:args:Bundle => loaderのコンストラクタに渡される？
         // 引数3:LoaderCallbaks
-        supportLoaderManager.initLoader(LoaderID.ID_RSS_GET.id, bundle, this )
+        //supportLoaderManager.initLoader(LoaderID.ID_RSS_GET.id, bundle, this )
+        LoaderManager.getInstance<FragmentActivity>(this).initLoader(LoaderID.ID_RSS_GET.id, bundle, this )
 
         // 通知チャネルを作成する
         createChannel(this)
@@ -74,7 +76,7 @@ class RssEachActivity : AppCompatActivity(),
                         .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                         .build()
         // ジョブを登録する
-        getSystemService(JobScheduler::class.java).schedule(fetchJob)
+        getSystemService(JobScheduler::class.java)?.schedule(fetchJob)
     }
 
     // LoaderManager.LoaderCallbacks<Rss>
