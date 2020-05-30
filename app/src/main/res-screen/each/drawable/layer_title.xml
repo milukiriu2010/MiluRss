@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- https://dev.classmethod.jp/etc/android-shape/ -->
+<!-- fragment_rss_each.xml -->
+<!-- ジャンルのタイトルに利用 -->
+<!-- 角が丸い四角形で、灰色の枠 -->
+<!-- 左下:紫のガラデーションがかかった円 -->
+<!-- 右上:緑のガラデーションがかかった円 -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 左下:紫のガラデーションがかかった円  -->
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="10dp" />
@@ -13,6 +19,7 @@
                 android:type="radial" />
         </shape>
     </item>
+    <!-- 右上:緑のガラデーションがかかった円 -->
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="10dp" />

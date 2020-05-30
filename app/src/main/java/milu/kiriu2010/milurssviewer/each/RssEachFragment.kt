@@ -1,5 +1,6 @@
 package milu.kiriu2010.milurssviewer.each
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -15,7 +16,7 @@ import milu.kiriu2010.id.BundleID
 import milu.kiriu2010.milurssviewer.R
 import java.text.SimpleDateFormat
 
-class RssEachFragment: androidx.fragment.app.Fragment() {
+class RssEachFragment: Fragment() {
     // RSSコンテンツを表示するリサイクラービュー
     private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
 
@@ -24,7 +25,7 @@ class RssEachFragment: androidx.fragment.app.Fragment() {
 
     // Rssの記事一覧を表示するフラグメントを生成
     companion object {
-        fun newInstance(rss: Rss): androidx.fragment.app.Fragment {
+        fun newInstance(rss: Rss): Fragment {
             val fragmentRssEach = RssEachFragment()
 
             // Rss記事フラグメントに渡すデータをセット
@@ -65,6 +66,7 @@ class RssEachFragment: androidx.fragment.app.Fragment() {
         Log.d(javaClass.simpleName, "onDestroy")
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
         Log.d(javaClass.simpleName, "onCreateView")
@@ -79,7 +81,7 @@ class RssEachFragment: androidx.fragment.app.Fragment() {
         // RSSコンテンツの公開日
         val labelPubDate = view.findViewById<TextView>(R.id.labelPubDate)
         //labelPubDate.text = "{this.rss.pubDate}月{this.rss.pubDate}日{this.rss.pubDate}時"
-        val dateFormat = SimpleDateFormat("Y年M月d日H時")
+        val dateFormat = SimpleDateFormat("Y年M月d日H時m分")
         labelPubDate.text = dateFormat.format(this.rss.pubDate)
 
         // RSS記事一覧

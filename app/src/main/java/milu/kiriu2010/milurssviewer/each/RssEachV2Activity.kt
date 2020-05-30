@@ -18,7 +18,8 @@ import milu.kiriu2010.milurssviewer.R
 import java.io.IOException
 import java.text.ParseException
 
-class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<AsyncResult<Rss>> {
+class RssEachV2Activity : AppCompatActivity()
+        , LoaderManager.LoaderCallbacks<AsyncResult<Rss>> {
 
     // ------------------------------------------------------
     // この画面が生成される際、呼び出される
@@ -32,13 +33,11 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
         // 戻るボタンをアクションバーに表示
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // 前画面より、この画面で表示するRSSのURL情報が送られてくる
-        val urlData = intent.getParcelableExtra<URLData>(IntentID.KEY_RSS_EACH.id)
+        // 前画面(URLLstActivity)より、この画面(RssEachV2Activity)で表示するRSSのURL情報が送られてくる
+        val urlData = intent.getParcelableExtra<URLData>(IntentID.KEY_RSS_EACH.id)!!
 
         Log.d( javaClass.simpleName, "====================================" )
-        urlData?.let {
-            Log.d( javaClass.simpleName, "urlData[" + it.url.toString() + "]" )
-        }
+        Log.d( javaClass.simpleName, "urlData[" + urlData.url.toString() + "]" )
 
         // ローダに渡すURL情報の箱を生成
         val bundle = Bundle()
@@ -109,7 +108,7 @@ class RssEachV2Activity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Asy
 
         return when ( id ) {
             LoaderID.ID_RSS_GET.id -> {
-                val urlData: URLData? = args?.getParcelable(IntentID.KEY_URL_DATA.id)
+                val urlData: URLData = args?.getParcelable(IntentID.KEY_URL_DATA.id)!!
                 RssV2Loader(this,urlData)
             }
             else -> {

@@ -14,12 +14,18 @@ import android.widget.TextView
 import milu.kiriu2010.entity.GenreData
 import milu.kiriu2010.milurssviewer.R
 
-class GenreLstFragment: androidx.fragment.app.Fragment() {
-    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
+class GenreLstFragment: Fragment() {
+    private lateinit var recyclerView: RecyclerView
 
     // ジャンルをタップしたときのコールバックインターフェース
     interface OnGenreSelectListener {
         fun onSelectedGenre( genreData: GenreData )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+        }
     }
 
     // ---------------------------------------------------------
@@ -51,39 +57,35 @@ class GenreLstFragment: androidx.fragment.app.Fragment() {
         recyclerView = view.findViewById(R.id.rvGenre)
 
         // ジャンルリストを縦方向に並べて表示
-        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
         // コンテキストのnullチェック
         val ctx = context ?: return view
 
         // ジャンル一覧を表示するためのアダプタ
-        val adapter = GenreLstAdapter( ctx, loadGenreData() ) { genreData ->
+        val adapter = GenreLstAdapter( ctx, GenreData.loadGenreData() ) { genreData ->
             // タップされたらコールバックを呼ぶ
-            // コールバックにタップされたGenreDataオブジェクトを渡す
-            ( ctx as OnGenreSelectListener).onSelectedGenre(genreData)
+            // タップされたジャンル情報を渡す
+            // URLLstActivity.onSelectedGenreが呼び出される
+            ( ctx as OnGenreSelectListener ).onSelectedGenre(genreData)
         }
         recyclerView.adapter = adapter
 
         // 区切り線を入れる
         // https://qiita.com/morimonn/items/035b1d85fec56e64f3e1
-        val itemDecoration = androidx.recyclerview.widget.DividerItemDecoration(ctx, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL)
+        val itemDecoration = DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(itemDecoration)
 
         return view
     }
 
-    private fun loadGenreData(): MutableList<GenreData> {
-        val genreLst: MutableList<GenreData> = mutableListOf<GenreData>()
-
-        genreLst.add( GenreData( 1,"2ch", 1 ))
-        genreLst.add( GenreData( 2,"豆知識", 2 ))
-        genreLst.add( GenreData( 3,"ニュース", 3))
-        genreLst.add( GenreData( 4,"天気", 4))
-        genreLst.add( GenreData( 5,"IT", 5 ) )
-        genreLst.add( GenreData( 6,"スポーツ", 6 ) )
-
-        return genreLst
+    companion object {
+        fun newInstance() =
+                GenreLstFragment().apply {
+                    arguments = Bundle().apply {
+                    }
+                }
     }
 
 }

@@ -5,20 +5,23 @@ import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
+import java.lang.Exception
 import java.net.*
 
-// =======================================
+// ==============================================
+// HTTP/HTTPS通信するクラス
+// ----------------------------------------------
 // ver 0.0.1 2018.08.28  no cache
 // ver 0.0.2 2018.09.03  GET parameter
 // ver 0.0.3 2018.09.14  redirect
 // ver 0.0.4 2018.10.12  doPost(method)
-// ---------------------------------------
-// =======================================
+// ver 0.0.5 2020.05.30  接続オブジェクトをNULL不可
+// ==============================================
 abstract class MyURLConAbs: Cloneable {
     // 接続先URL
     lateinit var url: URL
     // 接続オブジェクト
-    var conAbs: URLConnection? = null
+    lateinit var conAbs: URLConnection
     // 接続しているかどうか
     var connected = false
 
@@ -78,7 +81,7 @@ abstract class MyURLConAbs: Cloneable {
     // 接続していたらスキップ
     // ------------------------------------
     @Throws(IOException::class)
-    public fun openConnection( hasGetParam: HAS_GET_PARAM = HAS_GET_PARAM.NO ): URLConnection? {
+    fun openConnection(hasGetParam: HAS_GET_PARAM = HAS_GET_PARAM.NO ): URLConnection? {
         try {
             if ( connected == false ) {
                 // GETパラメータがある場合、URLにGETパラメータを付与する
@@ -98,20 +101,25 @@ abstract class MyURLConAbs: Cloneable {
                 }
 
                 conAbs = url.openConnection()
+
+                // HTTPS通信する場合、オプションを設定する
                 setSocketOption()
                 //connected = true
             }
         }
         catch ( ioEx: IOException ) {
-            conAbs = null
             //connected = false
+            throw ioEx
         }
         return conAbs
     }
 
-    @Throws(ConnectException::class,IOException::class)
+    @Throws(ConnectException::class,IOException::class,Exception::class)
     fun doGet() {
-        val con = this.conAbs as? HttpURLConnection ?: return
+        if ( !this::conAbs.isInitialized ) {
+            throw Exception("connection object is not initialized")
+        }
+        val con = this.conAbs as HttpURLConnection
 
         // クリア
         clear()
@@ -222,9 +230,12 @@ abstract class MyURLConAbs: Cloneable {
         br.close()
     }
 
-    @Throws(ConnectException::class,IOException::class)
+    @Throws(ConnectException::class,IOException::class,Exception::class)
     fun doPost(method: String = "POST") {
-        val con = this.conAbs as? HttpURLConnection ?: return
+        if ( !this::conAbs.isInitialized ) {
+            throw Exception("connection object is not initialized")
+        }
+        val con = this.conAbs as HttpURLConnection
 
         // クリア
         clear()

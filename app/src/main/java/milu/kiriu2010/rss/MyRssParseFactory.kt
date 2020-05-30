@@ -6,9 +6,15 @@ import org.xml.sax.SAXException
 import java.io.IOException
 import javax.xml.parsers.ParserConfigurationException
 
+// =======================================================
+// XML文字列を元に、Rssオブジェクトを生成する
+// -------------------------------------------------------
+// 2020.05.30 どのオブジェクトを生成するべきか判断できない場合、
+//            nullではなく、Exceptionを返却するようにした
+// =======================================================
 object MyRssParseFactory {
-    @Throws(ParserConfigurationException::class, IOException::class, SAXException::class)
-    fun createInstance( strXML: String ): MyRssParseRssAbs? {
+    @Throws(ParserConfigurationException::class, IOException::class, SAXException::class,Exception::class)
+    fun createInstance( strXML: String ): MyRssParseRssAbs {
         val myXMLParse = MyXMLParse()
         val xmlDoc = myXMLParse.str2doc(strXML)
         // ルート要素
@@ -21,38 +27,35 @@ object MyRssParseFactory {
             attrMap.put( attr.nodeName, attr.nodeValue )
         }
 
-        var myRssParseAbs: MyRssParseRssAbs? = null
-        /// ルート要素のタグ名によって、処理を振り分ける
-        when ( rootNode.nodeName ) {
-            // RSS2.0
-            // RSS0.91
-            "rss" -> {
-                myRssParseAbs = analyzeRss( attrMap )
+        val myRssParseAbs =
+            /// ルート要素のタグ名によって、処理を振り分ける
+            when ( rootNode.nodeName ) {
+                // RSS2.0
+                // RSS0.91
+                "rss" -> {
+                    analyzeRss( attrMap )
+                }
+                // RSS1.0
+                "rdf:RDF" ->{
+                    MyRssParseRss1M0()
+                }
+                else ->{
+                    throw Exception("unknown nodeName({${rootNode.nodeName}})")
+                }
             }
-            // RSS1.0
-            "rdf:RDF" ->{
-                myRssParseAbs = MyRssParseRss1M0()
-            }
-            else ->{
-                return myRssParseAbs
-            }
-        }
 
-        if ( myRssParseAbs != null ) {
-            myRssParseAbs.myXMLParse = myXMLParse
-            myRssParseAbs.xmlRoot = xmlDoc
-        }
+        myRssParseAbs.myXMLParse = myXMLParse
+        myRssParseAbs.xmlRoot = xmlDoc
 
         return myRssParseAbs
     }
 
-    private fun analyzeRss( attrMap: MutableMap<String,String> ): MyRssParseRssAbs? {
+    @Throws(java.lang.Exception::class)
+    private fun analyzeRss( attrMap: MutableMap<String,String> ): MyRssParseRssAbs {
         val version: String? = attrMap["version"]
         val xmlnsDC: String? = attrMap["xmlns:dc"]
 
-        var myRssParseAbs: MyRssParseRssAbs?
-
-        myRssParseAbs =
+        val myRssParseAbs =
             when ( version ) {
                 "2.0" -> {
                     when ( xmlnsDC ) {
@@ -61,7 +64,7 @@ object MyRssParseFactory {
                     }
                 }
                 "0.91" -> MyRssParseRss0M91()
-                else -> null
+                else -> throw Exception("unknown RSS version[{$version}]")
             }
 
         return myRssParseAbs

@@ -51,7 +51,7 @@ class URLLstActivity : AppCompatActivity(),
             // ジャンル一覧を表示するフラグメントを追加
             if ( supportFragmentManager.findFragmentByTag("fragmentGenreLst") == null ) {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameGenreLst, GenreLstFragment(), "fragmentGenreLst")
+                        .replace(R.id.frameGenreLst, GenreLstFragment.newInstance(), "fragmentGenreLst")
                         .addToBackStack(null)
                         .commit()
             }
@@ -113,7 +113,7 @@ class URLLstActivity : AppCompatActivity(),
     }
 
     // ナビゲーションドロワーを開閉するためのアイコンをアクションバーに配置する
-    private fun setupDrawer( drawer: DrawerLayout) {
+    private fun setupDrawer( drawer: DrawerLayout ) {
         val toggle = ActionBarDrawerToggle( this, drawer, R.string.app_name, R.string.app_name )
         // ドロワーのトグルを有効にする
         toggle.isDrawerIndicatorEnabled = true

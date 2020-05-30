@@ -1,15 +1,23 @@
 package milu.kiriu2010.netv2
 
 import android.util.Log
+import java.lang.Exception
 import java.net.URL
 import java.net.URLConnection
 
+// ----------------------------------------------------
+// HTTP/HTTPS通信するオブジェクト生成
+// URLの値によって、HTTP or HTTPS用のいづれかを生成する
+// ----------------------------------------------------
+// 2020.05.30  判定できない場合、NULLではなくExceptionを発行
+// ----------------------------------------------------
 class MyURLConFactory {
 
     companion object {
         private val TAG = "MyURLConFactory"
 
-        fun createInstance( url: URL, myURLConAbsCmp: MyURLConAbs? ): MyURLConAbs? {
+        @Throws(Exception::class)
+        fun createInstance( url: URL, myURLConAbsCmp: MyURLConAbs? ): MyURLConAbs {
             Log.d( TAG, "================================" )
             Log.d( TAG, "URL protocol[" + url.protocol + "]" )
             Log.d( TAG, "URL host[" + url.host + "]" )
@@ -24,13 +32,13 @@ class MyURLConFactory {
             // コネクションを再利用したいため、
             // オブジェクトをコピーしたものを返す
             // -----------------------------------------
-            if ( myURLConAbsCmp != null ) {
+            myURLConAbsCmp?.let {
                 if (
-                        ( url.protocol.equals(myURLConAbsCmp.url.protocol) ) and
-                        ( url.host.equals(myURLConAbsCmp.url.host) ) and
-                        (url.port.equals(myURLConAbsCmp.url.port))
+                        ( url.protocol.equals(it.url.protocol) ) and
+                        ( url.host.equals(it.url.host) ) and
+                        (url.port.equals(it.url.port))
                 ) {
-                    val myURLConAbsCopy = myURLConAbsCmp.clone() as MyURLConAbs
+                    val myURLConAbsCopy = it.clone() as MyURLConAbs
                     myURLConAbsCopy.url = url
                     return myURLConAbsCopy
                 }
@@ -40,7 +48,7 @@ class MyURLConFactory {
             // 接続オブジェクトがない場合、
             // 接続先プロトコルを元に生成
             // -----------------------------------------
-            var myURLConAbs: MyURLConAbs? =
+            val myURLConAbs: MyURLConAbs =
                 if ( "http".equals(url.protocol) ) {
                     MyURLConHttp()
                 }
@@ -48,12 +56,10 @@ class MyURLConFactory {
                     MyURLConHttps()
                 }
                 else{
-                    null
+                    throw Exception("not found protocol")
                 }
 
-            if ( myURLConAbs != null ) {
-                myURLConAbs.url = url
-            }
+            myURLConAbs.url = url
 
             return myURLConAbs
         }

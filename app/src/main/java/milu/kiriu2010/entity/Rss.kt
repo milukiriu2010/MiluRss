@@ -1,11 +1,7 @@
 package milu.kiriu2010.entity
 
-import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.loader.content.AsyncTaskLoader
-import android.util.Log
-import milu.kiriu2010.net.httpGet
 import org.w3c.dom.NodeList
 import java.io.InputStream
 import java.text.SimpleDateFormat
@@ -13,39 +9,6 @@ import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
-
-// RSSの各記事を表すデータクラス
-data class Article( val title: String, val link: String, val pubDate: Date ): Parcelable {
-    constructor(parcel: Parcel) : this(
-            // title
-            parcel.readString() ?: "",
-            // link
-            parcel.readString() ?: "",
-            // pubDate
-            Date(parcel.readLong())) {
-    }
-
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.let {
-            it.writeString(title)
-            it.writeString(link)
-            it.writeLong(pubDate.time)
-        }
-    }
-
-    override fun describeContents(): Int = 0
-
-    companion object CREATOR : Parcelable.Creator<Article> {
-        override fun createFromParcel(parcel: Parcel): Article {
-            return Article(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Article?> {
-            return arrayOfNulls(size)
-        }
-    }
-
-}
 
 // RSSを表現するデータクラス
 data class Rss(
@@ -81,10 +44,10 @@ data class Rss(
         override fun newArray(size: Int): Array<Rss?> {
             return arrayOfNulls(size)
         }
+
     }
 
 }
-
 
 // RSS2.0をパースしてRssオブジェクトに変換する
 fun parseRss(stream: InputStream) : Rss {

@@ -31,6 +31,8 @@ import milu.kiriu2010.job.createChannel
 import milu.kiriu2010.milurssviewer.R
 import java.util.concurrent.TimeUnit
 
+// たぶん使ってない
+// 通知チャネルを使っているから、とりあえず残す
 class RssEachActivity : AppCompatActivity(),
         LoaderManager.LoaderCallbacks<Rss> {
     override fun onCreate(savedInstanceState: Bundle?) {

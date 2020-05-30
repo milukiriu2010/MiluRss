@@ -13,32 +13,31 @@ import java.net.URL
 
 // RSSフィードをダウンロードしてRssオブジェクトを返すローダー
 // 2020.05.20 minSdkVersion 28に伴う修正
-class RssV2Loader(context: Context, val urlData: URLData? ) :
-        AsyncTaskLoader<AsyncResult<Rss>>(context) {
+class RssV2Loader(context: Context, val urlData: URLData )
+    : AsyncTaskLoader<AsyncResult<Rss>>(context) {
 
     private var cache : AsyncResult<Rss>? = null
 
     // このローダーがバックグラウンドで行う処理
     override fun loadInBackground(): AsyncResult<Rss>? {
         Log.d( javaClass.simpleName, "========================" )
-        urlData?.url?.let {
-            Log.d( javaClass.simpleName, it.toString() )
-        }
-
-        // URLがない場合、何も処理せず終了する
-        urlData?.url?.toString() ?: return null
+        Log.d( javaClass.simpleName, urlData.url.toString() )
 
         return accessPeer(urlData.url,null)
     }
 
-    private fun accessPeer(url: URL, @Suppress("UNUSED_PARAMETER") myURLConAbsCmp: MyURLConAbs? ): AsyncResult<Rss> {
+    private fun accessPeer(
+            url: URL,
+            myURLConAbsCmp: MyURLConAbs? )
+            : AsyncResult<Rss> {
+
         // Loader呼び出し元が受け取るデータ
         val asyncResult = AsyncResult<Rss>()
 
-        // 接続＆データをGETする
-        val urlConAbs = MyURLConFactory.createInstance(url,null)
         try {
-            urlConAbs?.apply {
+            // 接続＆データをGETする
+            val urlConAbs = MyURLConFactory.createInstance(url,myURLConAbsCmp)
+            urlConAbs.apply {
                 openConnection()
 
                 // 処理終了後、クローズする
@@ -53,16 +52,9 @@ class RssV2Loader(context: Context, val urlData: URLData? ) :
                 // 通信が成功してれば、取得した文字列をRSS解析する
                 // ----------------------------------------------
                 if ( responseOK == MyURLConAbs.RESPONSE_OK.OK ) {
-                    //val myRssParse = MyRssParse()
-                    //val rss = myRssParse.str2rss(this.responseBuffer.toString())
                     val myRssParseAbs = MyRssParseFactory.createInstance(this.responseBuffer.toString())
-                    if ( myRssParseAbs != null ) {
-                        val rss = myRssParseAbs.analyze()
-                        asyncResult.data = rss
-                    }
-                    else {
-                        throw Exception("Unknown Format RSS")
-                    }
+                    val rss = myRssParseAbs.analyze()
+                    asyncResult.data = rss
                 }
                 // ----------------------------------------------
                 // リダイレクトの場合、リダイレクト先に遷移
@@ -116,5 +108,4 @@ class RssV2Loader(context: Context, val urlData: URLData? ) :
         onStopLoading()
         cache = null
     }
-
 }

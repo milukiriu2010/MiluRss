@@ -3,6 +3,7 @@ package milu.kiriu2010.netv2
 import android.util.Log
 import javax.net.ssl.HttpsURLConnection
 
+// HTTPS通信する際、利用されるクラス
 class MyURLConHttps: MyURLConAbs() {
     override fun setSocketOption() {
         val conHttps = this.conAbs as? HttpsURLConnection ?: return

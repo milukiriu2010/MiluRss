@@ -7,6 +7,7 @@
     tools:context="milu.kiriu2010.milurssviewer.main.URLLstActivity">
 
     <!-- メインコンテンツ -->
+    <!-- URL一覧を表示 -->
     <FrameLayout
         android:id="@+id/frameURLLst"
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
     </FrameLayout>
 
     <!-- ドロワーコンテンツ -->
+    <!-- ジャンル一覧を表示 -->
     <FrameLayout
         android:id="@+id/frameGenreLst"
         android:layout_width="240dp"
