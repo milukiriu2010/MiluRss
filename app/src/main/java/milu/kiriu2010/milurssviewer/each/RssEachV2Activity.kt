@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentActivity
 import milu.kiriu2010.entity.Rss
 import milu.kiriu2010.entity.URLData
 import milu.kiriu2010.gui.common.ExceptionFragment
+import milu.kiriu2010.gui.progress.ProgressFragment
+import milu.kiriu2010.id.FragmentID
 import milu.kiriu2010.id.IntentID
 import milu.kiriu2010.id.LoaderID
 import milu.kiriu2010.loader.AsyncResult
@@ -109,6 +111,14 @@ class RssEachV2Activity : AppCompatActivity()
         return when ( id ) {
             LoaderID.ID_RSS_GET.id -> {
                 val urlData: URLData = args?.getParcelable(IntentID.KEY_URL_DATA.id)!!
+                // 進捗状況を表示するフラグメントを表示
+                if ( supportFragmentManager.findFragmentByTag(FragmentID.ID_PROGRESS.id) == null ) {
+                    supportFragmentManager.beginTransaction()
+                            .add(R.id.frameRssResult,ProgressFragment.newInstance(),FragmentID.ID_PROGRESS.id)
+                            .commit()
+                }
+
+                // RSSデータを取得するローダを起動
                 RssV2Loader(this,urlData)
             }
             else -> {
@@ -125,6 +135,14 @@ class RssEachV2Activity : AppCompatActivity()
         Log.d(javaClass.simpleName, "" )
         Log.d(javaClass.simpleName, "onLoadFinished" )
         Log.d(javaClass.simpleName, "==============" )
+
+        // 進捗状況を表示するフラグメントを削除
+        supportFragmentManager.findFragmentByTag(FragmentID.ID_PROGRESS.id)?.let {
+            supportFragmentManager.beginTransaction()
+                    .remove(it)
+                    .commit()
+        }
+
         if ( data == null ) return
 
         // RSS記事一覧取得でエラーあり
