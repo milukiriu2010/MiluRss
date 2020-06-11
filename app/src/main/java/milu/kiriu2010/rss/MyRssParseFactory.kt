@@ -39,6 +39,10 @@ object MyRssParseFactory {
                 "rdf:RDF" ->{
                     MyRssParseRss1M0()
                 }
+                // Atom
+                "feed" -> {
+                    MyRssParseRssAtom()
+                }
                 else ->{
                     throw Exception("unknown nodeName({${rootNode.nodeName}})")
                 }

@@ -12,6 +12,8 @@ abstract class MyRssParseRssAbs {
     lateinit var myXMLParse: MyXMLParse
     // XMLルートドキュメント
     lateinit var xmlRoot: Document
+    // RSSバージョン
+    lateinit var ver: String
 
     @Throws(ParserConfigurationException::class, IOException::class, SAXException::class)
     abstract fun analyze(): Rss

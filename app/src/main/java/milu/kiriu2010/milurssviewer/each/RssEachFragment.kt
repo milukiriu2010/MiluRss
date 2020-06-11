@@ -84,6 +84,10 @@ class RssEachFragment: Fragment() {
         val dateFormat = SimpleDateFormat("Y年M月d日H時m分")
         labelPubDate.text = dateFormat.format(this.rss.pubDate)
 
+        // RSSコンテンツのバージョン
+        val labelRssVer = view.findViewById<TextView>(R.id.labelRssVer)
+        labelRssVer.text = this.rss.ver
+
         // RSS記事一覧
         recyclerView = view.findViewById(R.id.rvRssEach)
 

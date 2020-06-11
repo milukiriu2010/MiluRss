@@ -10,6 +10,11 @@ import java.util.*
 // view-source:http://blog.livedoor.jp/dqnplus/index.rdf
 // rss1.0
 class MyRssParseRss1M0: MyRssParseRssAbs() {
+
+    init {
+        ver = "rss1.0"
+    }
+
     override fun analyze(): Rss {
         // -------------------------------------------------------
         // DOMのルートタグ名を取得
@@ -87,6 +92,7 @@ class MyRssParseRss1M0: MyRssParseRssAbs() {
 
         // RSSオブジェクトを生成
         val rss = Rss(
+                ver,
                 titleNode!!.nodeValue,
                 pubDate,
                 articles

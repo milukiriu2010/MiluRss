@@ -95,6 +95,7 @@ class MyRssParse {
 
         // RSSオブジェクトを生成
         val rss = Rss(
+                "unkown",
                 titleNode!!.nodeValue,
                 pubDate!!,
                 articles

@@ -95,7 +95,7 @@ data class URLData(
             urlLst.add( URLData( 8, 1,
                     "まとめたニュース",
                     URL("http://matometanews.com/index.rdf")) )
-            // RSS 1.1
+            // Atom 0.3
             // 2ch
             urlLst.add( URLData( 9, 1,
                     "ガハろぐNewsヽ(･ω･)/ｽﾞｺｰ",
@@ -110,7 +110,7 @@ data class URLData(
             urlLst.add( URLData( 11, 1,
                     "VIPPERな俺",
                     URL("http://blog.livedoor.jp/news23vip/atom.xml")) )
-            // RSS 1.0
+            // Atom
             // 2ch
             urlLst.add( URLData( 12, 1,
                     "妹はVIPPER",
@@ -125,22 +125,22 @@ data class URLData(
             urlLst.add( URLData( 14, 1,
                     "キニ速",
                     URL("http://blog.livedoor.jp/kinisoku/index.rdf")) )
-            // RSS 1.1
+            // Atom
             // 2ch
             urlLst.add( URLData( 15, 1,
                     "暇人＼(^o^)／速報",
                     URL("http://himasoku.com/atom.xml")) )
-            // RSS 1.6
+            // RSS 1.0
             // 2ch
             urlLst.add( URLData( 16, 1,
                     "すくいぬ",
                     URL("http://suiseisekisuisui.blog107.fc2.com/?xml")) )
-            // RSS 1.1
+            // Atom
             // 2ch
             urlLst.add( URLData( 17, 1,
                     "ライフハックちゃんねる弐式",
                     URL("http://lifehack2ch.livedoor.biz/atom.xml")) )
-            // RSS 1.1
+            // Atom
             // 2ch
             urlLst.add( URLData( 18, 1,
                     "哲学ニュースnwk",
@@ -150,17 +150,17 @@ data class URLData(
             urlLst.add( URLData( 18, 1,
                     "ラジック",
                     URL("http://rajic.2chblog.jp/index.rdf")) )
-            // RSS 1.0
+            // Atom
             // 2ch
             urlLst.add( URLData( 19, 1,
                     "(*ﾟ∀ﾟ)ゞカガクニュース隊",
                     URL("http://www.scienceplus2ch.com/atom.xml")) )
-            // RSS 1.1
+            // Atom
             // 2ch
             urlLst.add( URLData( 20, 1,
                     "カオスちゃんねる",
                     URL("http://chaos2ch.com/atom.xml")) )
-            // RSS 2.0
+            // RSS 2.0+1.0
             // 豆知識
             urlLst.add( URLData(101,2,
                     "ライフハッカー",
@@ -168,7 +168,7 @@ data class URLData(
             // 上のURLだと301が返される
             // こっちが現在のURL
             //urlLst.add( URLData(5,2, "ライフハッカー", URL("https://www.lifehacker.jp/feed/index.xml")) )
-            // RSS 2.0
+            // RSS 2.0+1.0
             // 豆知識
             urlLst.add( URLData( 102,2,
                     "ロケットニュース",
@@ -183,7 +183,7 @@ data class URLData(
             urlLst.add( URLData( 301,4,
                     "Yahoo(東京)",
                     URL("https://rss-weather.yahoo.co.jp/rss/days/4410.xml")) )
-            // RSS 2.0
+            // RSS 2.0+1.0
             // 天気
             urlLst.add( URLData( 302,4,
                     "BBC(Manchester)",
@@ -223,7 +223,7 @@ data class URLData(
             urlLst.add( URLData( 406, 5,
                     "＠IT Linux＆OSSフォーラム 最新記事一覧",
                     URL("https://rss.itmedia.co.jp/rss/2.0/ait_linux.xml")) )
-            // RSS 2.0+1.1?
+            // RSS 2.0+1.0
             // IT
             urlLst.add( URLData( 407, 5,
                     "GIGAZINE",

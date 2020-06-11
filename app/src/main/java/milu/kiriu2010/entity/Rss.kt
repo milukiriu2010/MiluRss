@@ -12,12 +12,15 @@ import javax.xml.xpath.XPathFactory
 
 // RSSを表現するデータクラス
 data class Rss(
+        var ver: String = "",
         var title: String = "",
         var pubDate: Date = Date(),
         val articles: MutableList<Article> = mutableListOf()
 ): Parcelable {
     @Suppress("UNCHECKED_CAST")
     constructor(parcel: Parcel) : this(
+            // ver
+            parcel.readString() ?: "",
             // title
             parcel.readString()  ?: "",
             // pubDate
@@ -28,6 +31,7 @@ data class Rss(
 
     override fun writeToParcel(dest: Parcel?, flags: Int) {
         dest?.let {
+            it.writeString(ver)
             it.writeString(title)
             it.writeLong(pubDate.time)
             it.writeList(articles as List<Article>)

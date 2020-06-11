@@ -9,6 +9,10 @@ import java.util.*
 // https://rss.itmedia.co.jp/rss/0.91/ait.xml
 // rss0.91
 class MyRssParseRss0M91: MyRssParseRssAbs() {
+    init {
+        ver = "rss0.91"
+    }
+
     override fun analyze(): Rss {
         // -------------------------------------------------------
         // DOMのルートタグ名を取得
@@ -84,6 +88,7 @@ class MyRssParseRss0M91: MyRssParseRssAbs() {
 
         // RSSオブジェクトを生成
         val rss = Rss(
+                ver,
                 titleNode!!.nodeValue,
                 pubDate!!,
                 articles

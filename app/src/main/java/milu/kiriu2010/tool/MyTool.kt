@@ -10,6 +10,7 @@ import java.util.*
 // 2018.10.06  rawファイルの中身をString型に変換
 // 2018.09.25  今日の日付をYYYYMMDD形式で取得
 // 2018.09.15  String(ISO8601+RFC3339)をDateへ変換
+// 2020.06.11  rfc3339dateの形式追加
 class MyTool {
     companion object {
         // ----------------------------------------
@@ -40,7 +41,7 @@ class MyTool {
         fun getToday( zone: String = "Asia/Tokyo" ): String {
             // Date()はUTCなので、タイムゾーンを"Asia/Tokyo"にして変換する
             val date = Date()
-            val dateFormat = SimpleDateFormat("yyyyMMdd")
+            val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
             dateFormat.timeZone = TimeZone.getTimeZone(zone)
             return dateFormat.format(date)
         }
@@ -51,14 +52,20 @@ class MyTool {
         // RFC3339
         //   2018-08-28T19:00:00+09:00
         //   2018-09-14T21:46:00Z
+        //   2020-06-11 08:35:30Z(追加:2020.06.11)
         // ----------------------------------------
         fun rfc3339date(str: String): Date {
             try {
                 val formatterRFC3339_1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz", Locale.US)
                 return formatterRFC3339_1.parse(str)!!
             } catch ( parseEx: ParseException) {
-                val formatterRFC3339_2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-                return formatterRFC3339_2.parse(str)!!
+                try {
+                    val formatterRFC3339_2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
+                    return formatterRFC3339_2.parse(str)!!
+                }  catch ( parseEx2: ParseException) {
+                    val formatterRFC3339_3 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss'Z'", Locale.US)
+                    return formatterRFC3339_3.parse(str)!!
+                }
             }
         }
 

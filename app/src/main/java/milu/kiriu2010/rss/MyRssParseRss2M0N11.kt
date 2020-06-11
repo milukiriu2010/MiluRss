@@ -14,6 +14,11 @@ import java.util.*
 //   rss2.0 pubDate
 //   rss1.0 dc:date
 class MyRssParseRss2M0N11: MyRssParseRssAbs() {
+
+    init {
+        ver = "rss2.0+1.0"
+    }
+
     override fun analyze(): Rss {
         // -------------------------------------------------------
         // DOMのルートタグ名を取得
@@ -116,6 +121,7 @@ class MyRssParseRss2M0N11: MyRssParseRssAbs() {
 
         // RSSオブジェクトを生成
         val rss = Rss(
+                ver,
                 titleNode!!.nodeValue,
                 pubDate,
                 articles
