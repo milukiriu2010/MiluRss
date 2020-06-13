@@ -1,0 +1,163 @@
+
+<?xml-stylesheet type="text/xsl" href="http://www.rssweather.com/xslt.php" ?><?xml-stylesheet type="text/css" href="http://www.rssweather.com/rss.css" ?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Manila, AR weather via rssWeather.com</title>
+        <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+        <description>
+            <![CDATA[Current weather, forecasts and alerts delivered using RSS.
+                <h2>Using the Feeds</h2>
+                <ul>
+                    <li>Request Frequency - The feeds are updated once per hour. More frequent requests may result in your access being limited.</li>
+                    <li>Web Site Usage - If you are using the feed on your web site, you are required to maintain a link to rssWeather.com</li>
+                </ul>]]>
+        </description>
+        <ttl>60</ttl>
+        <generator>rssWeather.com (http://www.rssweather.com/)</generator>
+        <language>en</language>
+
+        <item>
+            <title>Manila, AR Weather :: 90F Clear</title>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <category>Current Conditions</category>
+            <pubDate>Fri, 12 Jun 2020 14:57:00 -0500</pubDate>
+            <description>90F Clear</description>
+            <content:encoded>
+                <![CDATA[<h4>
+                    <a href="http://www.rssweather.com/zipcode/72442/wx.php" title="Manila, AR Weather Forecast">
+                    <img src="http://www.rssweather.net/images/fcicons/sunny.gif" alt="Clear" class="icon" width="55" height="58" id="echo $currentConditions->getIconName();" border="0"/>
+                    </a>
+                    <span class="sky">Clear</span>
+                    <span class="temp">90&#176;F</span>
+                </h4>
+                <dl style="display: inline;">
+                    <dt style="display: inline; font-weight: bold;">Humidity:</dt>
+                    <dd id="humidity" style="display: inline;">27</dd>
+                    <dt style="display: inline; font-weight: bold;">Wind Speed:</dt>
+                    <dd id="windspeed" style="display: inline;">3 MPH</dd>
+                    <dt style="display: inline; font-weight: bold;">Wind Direction:</dt>
+                    <dd id="winddir" style="display: inline;">Variable ( (999&deg;)&#176;)</dd>
+                    <dt style="display: inline; font-weight: bold;">Barometer:</dt>
+                    <dd id="pressure" style="display: inline;">30.20 in.</dd>
+                    <dt style="display: inline; font-weight: bold;">Dewpoint:</dt>
+                    <dd id="dewpoint" style="display: inline;">51.8&#176;F</dd>
+                    <dt style="display: inline; font-weight: bold;">Heat Index:</dt>
+                    <dd id="heatindex" style="display: inline;">89&#176;F</dd>
+                                        <dt style="display: inline; font-weight: bold;">Visibility:</dt>
+                    <dd id="visibility" style="display: inline;">10&nbsp; mi</dd></dl>]]>
+            </content:encoded>
+            <guid isPermaLink="false">Current-Last Updated on Jun 12 2020, 2:57 pm CDT</guid>
+        </item>
+                <item>
+            <title>Overnight</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>A slight chance of showers between 1am and 4am.  Mostly clear, with a low around 68. Calm wind.  Chance of precipitation is 20%.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Overnight</guid>
+        </item>
+                <item>
+            <title>Saturday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Sunny, with a high near 90. East northeast wind around 5 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Saturday</guid>
+        </item>
+                <item>
+            <title>Saturday Night</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly clear, with a low around 66. East wind around 5 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Saturday Night</guid>
+        </item>
+                <item>
+            <title>Sunday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Sunny, with a high near 89. East northeast wind around 5 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Sunday</guid>
+        </item>
+                <item>
+            <title>Sunday Night</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly clear, with a low around 64. East northeast wind around 5 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Sunday Night</guid>
+        </item>
+                <item>
+            <title>Monday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Sunny, with a high near 86. East northeast wind 5 to 10 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Monday</guid>
+        </item>
+                <item>
+            <title>Monday Night</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly clear, with a low around 62. East wind around 5 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Monday Night</guid>
+        </item>
+                <item>
+            <title>Tuesday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Sunny, with a high near 88. East northeast wind around 5 mph. </description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Tuesday</guid>
+        </item>
+                <item>
+            <title>Tuesday Night</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly clear, with a low around 65.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Tuesday Night</guid>
+        </item>
+                <item>
+            <title>Wednesday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Sunny, with a high near 90.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Wednesday</guid>
+        </item>
+                <item>
+            <title>Wednesday Night</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly clear, with a low around 67.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Wednesday Night</guid>
+        </item>
+                <item>
+            <title>Thursday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Sunny, with a high near 92.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Thursday</guid>
+        </item>
+                <item>
+            <title>Thursday Night</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly clear, with a low around 69.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Thursday Night</guid>
+        </item>
+                <item>
+            <title>Friday</title>
+            <category>Weather Forecast</category>
+            <link>http://www.rssweather.com/zipcode/72442/wx.php</link>
+            <description>Mostly sunny, with a high near 93.</description>
+            <pubDate>Fri, 12 Jun 2020 21:34:59 -0500</pubDate>
+            <guid isPermaLink="false">Forecast-12 Jun 23:53 pm CDT-Friday</guid>
+        </item>
+            </channel>
+</rss>

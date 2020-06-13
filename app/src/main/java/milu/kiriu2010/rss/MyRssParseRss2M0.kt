@@ -57,7 +57,9 @@ class MyRssParseRss2M0: MyRssParseRssAbs() {
         // Fri, 24 Aug 2018 07:10:00 +0900
         val formatter = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US)
         // RSSのpubDateをDate型に変換
-        val pubDate = formatter.parse(pubDateNode?.nodeValue!!)
+        val pubDate = pubDateNode?.let {
+            formatter.parse(it.nodeValue!!)
+        } ?: Date()
 
         // -------------------------------------------------------
         // RSSフィード内の記事の一覧

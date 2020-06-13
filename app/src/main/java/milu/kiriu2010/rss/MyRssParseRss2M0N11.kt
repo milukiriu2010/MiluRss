@@ -51,12 +51,21 @@ class MyRssParseRss2M0N11: MyRssParseRssAbs() {
         // -------------------------------------------------------
         var pubDate = Date()
         // "ライフハッカー"の場合、"pubDate","dc:date"共にない
-        val pubDateNode: Node? = myXMLParse.searchNode( xmlRoot, "/rss/channel/*[name()='dc:date']/text()")
+        var pubDateNode: Node? = myXMLParse.searchNode( xmlRoot, "/rss/channel/*[name()='dc:date']/text()")
+        if ( pubDateNode == null ) {
+            pubDateNode = myXMLParse.searchNode( xmlRoot, "/rss/channel/pubDate/text()")
+        }
         pubDateNode?.let {
             Log.d( javaClass.simpleName, "pubDate[$it.nodeValue]")
             // RSSのpubDateをDate型に変換
-            //pubDate = formatterRFC3339.parse(it.nodeValue)
-            pubDate = MyTool.rfc3339date(it.nodeValue)
+            try {
+                pubDate = MyTool.rfc3339date(it.nodeValue)
+            } catch ( parseEx1: ParseException ) {
+                try {
+                    pubDate = formatterRFC1123.parse(it.nodeValue)!!
+                } catch ( parseEx2: ParseException ) {
+                }
+            }
         }
 
         // -------------------------------------------------------
@@ -98,10 +107,11 @@ class MyRssParseRss2M0N11: MyRssParseRssAbs() {
             Log.d( javaClass.simpleName, "=============================================")
             var itemPubDate = Date()
             try {
-                //itemPubDate = formatterRFC3339.parse(itemPubDateNode?.nodeValue)
-                itemPubDate = MyTool.rfc3339date(itemPubDateNode!!.nodeValue)
+                itemPubDateNode?.let{
+                    itemPubDate = MyTool.rfc3339date(it.nodeValue)
+                }
             }
-            catch ( parseEx1: ParseException) {
+            catch ( parseEx1: ParseException ) {
                 try {
                     itemPubDate = formatterRFC1123.parse(itemPubDateNode?.nodeValue!!)!!
                 }

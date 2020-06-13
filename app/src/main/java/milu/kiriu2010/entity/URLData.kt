@@ -173,19 +173,52 @@ data class URLData(
             urlLst.add( URLData( 102,2,
                     "ロケットニュース",
                     URL("http://feeds.rocketnews24.com/rocketnews24")) )
+
+
             // RSS 2.0
             // ニュース
             urlLst.add( URLData( 201,3,
                     "Yahoo(主要)",
                     URL("https://news.yahoo.co.jp/pickup/rss.xml")) )
             // RSS 2.0
+            // ニュース
+            urlLst.add( URLData( 202,3,
+                    "NHKニュース",
+                    URL("https://www.nhk.or.jp/rss/news/cat0.xml")) )
+            // RSS 1.0
+            // ニュース
+            urlLst.add( URLData( 203,3,
+                    "日経新聞",
+                    URL("https://assets.wor.jp/rss/rdf/nikkei/news.rdf")) )
+            // RSS 2.0
+            // ニュース
+            urlLst.add( URLData( 211,3,
+                    "CNN",
+                    URL("http://rss.cnn.com/rss/edition.rss")) )
+            // RSS 2.0
+            // ニュース
+            urlLst.add( URLData( 212,3,
+                    "Wall Street Journal",
+                    URL("https://feeds.a.dj.com/rss/RSSWorldNews.xml")) )
+            // RSS 2.0
+            // ニュース
+            urlLst.add( URLData( 221,3,
+                    "inquirer.net",
+                    URL("https://www.inquirer.net/fullfeed")) )
+
+            // RSS 2.0
             // 天気
             urlLst.add( URLData( 301,4,
                     "Yahoo(東京)",
                     URL("https://rss-weather.yahoo.co.jp/rss/days/4410.xml")) )
+            // RSS 2.0
+            // 天気
+            urlLst.add( URLData( 311,4,
+                    "Manila, AR Weather",
+                    URL("http://www.rssweather.com/zipcode/72442/rss.php")) )
             // RSS 2.0+1.0
             // 天気
-            urlLst.add( URLData( 302,4,
+            urlLst.add( URLData( 331,4,
                     "BBC(Manchester)",
                     URL("https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2643123")) )
             // RSS 2.0
