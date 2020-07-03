@@ -47,7 +47,8 @@ data class GenreData(
             genreLst.add( GenreData( 3,"ニュース", 3))
             genreLst.add( GenreData( 4,"天気", 4))
             genreLst.add( GenreData( 5,"IT", 5 ) )
-            genreLst.add( GenreData( 6,"スポーツ", 6 ) )
+            genreLst.add( GenreData( 6,"プログラミング", 6 ) )
+            genreLst.add( GenreData( 7,"スポーツ", 7 ) )
 
             return genreLst
         }

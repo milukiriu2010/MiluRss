@@ -84,7 +84,9 @@ class MyRssParseRssAtom: MyRssParseRssAbs() {
             // -------------------------------------------------------
             // 記事のpubDateを取得
             // -------------------------------------------------------
-            val itemPubDateNode = myXMLParse.searchNode( itemNode, "./issued/text()" )
+            val itemPubDateNode = myXMLParse.searchNode( itemNode, "./issued/text()" ) ?:
+                myXMLParse.searchNode( itemNode, "./updated/text()" ) ?:
+                myXMLParse.searchNode( itemNode, "./published/text()" )
             Log.d( javaClass.simpleName, "=============================================")
             Log.d( javaClass.simpleName, "itemTitle[${itemTitleNode?.nodeValue}]")
             Log.d( javaClass.simpleName, "itemLink[${itemLinkNode?.nodeValue}]")
