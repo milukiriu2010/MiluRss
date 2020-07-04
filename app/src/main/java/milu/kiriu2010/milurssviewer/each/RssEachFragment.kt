@@ -81,7 +81,7 @@ class RssEachFragment: Fragment() {
         // RSSコンテンツの公開日
         val labelPubDate = view.findViewById<TextView>(R.id.labelPubDate)
         //labelPubDate.text = "{this.rss.pubDate}月{this.rss.pubDate}日{this.rss.pubDate}時"
-        val dateFormat = SimpleDateFormat("Y年M月d日H時m分")
+        val dateFormat = SimpleDateFormat("Y年M月d日H時m分s秒")
         labelPubDate.text = dateFormat.format(this.rss.pubDate)
 
         // RSSコンテンツのバージョン
