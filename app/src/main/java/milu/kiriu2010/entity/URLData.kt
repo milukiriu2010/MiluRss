@@ -160,6 +160,14 @@ data class URLData(
             urlLst.add( URLData( 120, 1,
                     "カオスちゃんねる",
                     URL("http://chaos2ch.com/atom.xml")) )
+
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 121, 1,
+                    "なんじぇいスタジアム",
+                    URL("http://blog.livedoor.jp/nanjstu/index.rdf")) )
+
+
             // RSS 2.0+1.0
             // 豆知識
             urlLst.add( URLData(201,2,
