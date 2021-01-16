@@ -185,9 +185,10 @@ data class URLData(
             // ------------------------------------------------------------------------------------
             // RSS 2.0
             // ニュース
+            // https://news.yahoo.co.jp/pickup/rss.xml
             urlLst.add( URLData( 301,3,
                     "Yahoo(主要)",
-                    URL("https://news.yahoo.co.jp/pickup/rss.xml")) )
+                    URL("https://news.yahoo.co.jp/rss/topics/top-picks.xml")) )
             // RSS 2.0
             // ニュース
             urlLst.add( URLData( 302,3,
@@ -233,6 +234,12 @@ data class URLData(
             urlLst.add( URLData( 361,3,
                     "الشرق الأوسط - أخبار",
                     URL("https://aawsat.com/feed")) )
+
+            // RSS 2.0
+            // ニュース
+            urlLst.add( URLData( 371,3,
+                    "BBC中文网",
+                    URL("https://feeds.bbci.co.uk/zhongwen/simp/rss.xml")) )
 
             // ------------------------------------------------------------------------------------
             // RSS 2.0
@@ -315,6 +322,18 @@ data class URLData(
             urlLst.add( URLData( 604, 6,
                     "Qiita - Java",
                     URL("https://qiita.com/tags/java/feed")) )
+
+            // Atom
+            // プログラミング
+            urlLst.add( URLData( 605, 6,
+                    "Qiita - php",
+                    URL("https://qiita.com/tags/php/feed")) )
+
+            // Atom
+            // プログラミング
+            urlLst.add( URLData( 606, 6,
+                    "Qiita - JavaScript",
+                    URL("https://qiita.com/tags/javascript/feed")) )
 
             // ------------------------------------------------------------------------------------
             // Atom
