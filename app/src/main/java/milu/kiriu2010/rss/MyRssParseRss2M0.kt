@@ -3,7 +3,9 @@ package milu.kiriu2010.rss
 import android.util.Log
 import milu.kiriu2010.entity.Article
 import milu.kiriu2010.entity.Rss
+import milu.kiriu2010.tool.MyTool
 import org.w3c.dom.Node
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -58,7 +60,13 @@ class MyRssParseRss2M0: MyRssParseRssAbs() {
         val formatter = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US)
         // RSSのpubDateをDate型に変換
         val pubDate = pubDateNode?.let {
-            formatter.parse(it.nodeValue!!)
+            try {
+                formatter.parse(it.nodeValue!!)
+            } catch ( parseEx1: ParseException ) {
+                // Yahooの場合、
+                // 2018-09-14T21:46:00Z
+                MyTool.rfc3339date(it.nodeValue)
+            }
         } ?: Date()
 
         // -------------------------------------------------------
@@ -95,10 +103,21 @@ class MyRssParseRss2M0: MyRssParseRssAbs() {
             Log.d( javaClass.simpleName, "itemPubDate[${itemPubDateNode?.nodeValue}]")
             Log.d( javaClass.simpleName, "=============================================")
 
+            // 2021.01.27
+            // Yahooの場合、
+            // 2018-09-14T21:46:00Z
+            val itemPubDate = itemPubDateNode?.let {
+                try {
+                    formatter.parse(it.nodeValue!!)
+                } catch ( parseEx: ParseException ) {
+                    MyTool.rfc3339date(it.nodeValue)
+                }
+            }
+
             val article = Article(
                     itemTitleNode!!.nodeValue,
                     itemLinkNode!!.nodeValue,
-                    formatter.parse(itemPubDateNode?.nodeValue!!)!!
+                    itemPubDate!!
             )
 
             articles.add(article)

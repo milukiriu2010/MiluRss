@@ -55,6 +55,12 @@ data class URLData(
         fun loadURLData(genreData: GenreData): MutableList<URLData> {
             val urlLst: MutableList<URLData> = mutableListOf()
 
+
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 100, 1,
+                    "なんじぇいスタジアム",
+                    URL("http://blog.livedoor.jp/nanjstu/index.rdf")) )
             // RSS 1.0
             // 2ch
             urlLst.add( URLData( 101, 1,
@@ -132,9 +138,10 @@ data class URLData(
                     URL("http://himasoku.com/atom.xml")) )
             // RSS 1.0
             // 2ch
-            urlLst.add( URLData( 116, 1,
-                    "すくいぬ",
-                    URL("http://suiseisekisuisui.blog107.fc2.com/?xml")) )
+            // 2013/08/19以降更新なし
+            //urlLst.add( URLData( 116, 1,
+            //        "すくいぬ",
+            //        URL("http://suiseisekisuisui.blog107.fc2.com/?xml")) )
             // Atom
             // 2ch
             urlLst.add( URLData( 117, 1,
@@ -147,9 +154,10 @@ data class URLData(
                     URL("http://blog.livedoor.jp/nwknews/atom.xml")) )
             // RSS 1.0
             // 2ch
-            urlLst.add( URLData( 118, 1,
-                    "ラジック",
-                    URL("http://rajic.2chblog.jp/index.rdf")) )
+            // 2020/05/10以降更新なし
+            //urlLst.add( URLData( 118, 1,
+            //        "ラジック",
+            //        URL("http://rajic.2chblog.jp/index.rdf")) )
             // Atom
             // 2ch
             urlLst.add( URLData( 119, 1,
@@ -160,12 +168,6 @@ data class URLData(
             urlLst.add( URLData( 120, 1,
                     "カオスちゃんねる",
                     URL("http://chaos2ch.com/atom.xml")) )
-
-            // RSS 1.0
-            // 2ch
-            urlLst.add( URLData( 121, 1,
-                    "なんじぇいスタジアム",
-                    URL("http://blog.livedoor.jp/nanjstu/index.rdf")) )
 
 
             // RSS 2.0+1.0

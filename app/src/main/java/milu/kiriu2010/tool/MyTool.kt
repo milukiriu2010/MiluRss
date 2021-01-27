@@ -53,18 +53,24 @@ class MyTool {
         //   2018-08-28T19:00:00+09:00
         //   2018-09-14T21:46:00Z
         //   2020-06-11 08:35:30Z(追加:2020.06.11)
+        //   2021-01-27T07:40:54.710Z(追加:2021.01.27)
         // ----------------------------------------
         fun rfc3339date(str: String): Date {
             try {
                 val formatterRFC3339_1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz", Locale.US)
                 return formatterRFC3339_1.parse(str)!!
-            } catch ( parseEx: ParseException) {
+            } catch ( parseEx: ParseException ) {
                 try {
                     val formatterRFC3339_2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
                     return formatterRFC3339_2.parse(str)!!
-                }  catch ( parseEx2: ParseException) {
-                    val formatterRFC3339_3 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss'Z'", Locale.US)
-                    return formatterRFC3339_3.parse(str)!!
+                }  catch ( parseEx2: ParseException ) {
+                    try {
+                        val formatterRFC3339_3 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss'Z'", Locale.US)
+                        return formatterRFC3339_3.parse(str)!!
+                    } catch ( parseEx3: ParseException ) {
+                        val formatterRFC3339_4 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+                        return formatterRFC3339_4.parse(str)!!
+                    }
                 }
             }
         }
