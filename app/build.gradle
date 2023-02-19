@@ -28,6 +28,7 @@ android {
                     .each { res.srcDirs += it.path }
         }
     }
+    namespace 'milu.kiriu2010.milurssviewer'
 }
 
 dependencies {

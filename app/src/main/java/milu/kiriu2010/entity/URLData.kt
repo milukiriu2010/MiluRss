@@ -61,16 +61,199 @@ data class URLData(
             urlLst.add( URLData( 100, 1,
                     "なんじぇいスタジアム",
                     URL("http://blog.livedoor.jp/nanjstu/index.rdf")) )
-            // RSS 1.0
+            // RSS ??
             // 2ch
             urlLst.add( URLData( 101, 1,
+                "サッカー5chまとめ",
+                URL("https://footballnet.2chblog.jp/index.rdf")) )
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 102, 1,
                     "痛いニュース(ﾉ∀`)",
                     URL("http://blog.livedoor.jp/dqnplus/index.rdf")) )
             // RSS 1.0
             // 2ch
-            urlLst.add( URLData( 102, 1,
+            urlLst.add( URLData( 103, 1,
+                "アルファルファモザイク",
+                URL("http://alfalfalfa.com/index.rdf")) )
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 104, 1,
                     "【2ch】ニュー速クオリティ",
                     URL("http://news4vip.livedoor.biz/index.rdf")) )
+            // RSS 1.1
+            // 2ch
+            urlLst.add( URLData( 105, 1,
+                "VIPPERな俺",
+                URL("http://blog.livedoor.jp/news23vip/atom.xml")) )
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 106, 1,
+                "キニ速",
+                URL("http://blog.livedoor.jp/kinisoku/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 107, 1,
+                "おる速",
+                URL("http://orusoku.com/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 108, 1,
+                "VIPワイドガイド",
+                URL("http://blog.livedoor.jp/news4wide123/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 109, 1,
+                "ブラブラブラウジング",
+                URL("http://brow2ing.com/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 110, 1,
+                "ツインテール速報",
+                URL("http://twintailsokuhou.blog.jp/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 111, 1,
+                "いたしん！",
+                URL("http://itaishinja.com/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 112, 1,
+                "働くモノニュース",
+                URL("http://workingnews.blog117.fc2.com/?xml")) )
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 113, 1,
+                "働くモノニュース",
+                URL("http://workingnews.blog117.fc2.com/?xml")) )
+            // Atom
+            // 2ch
+            urlLst.add( URLData( 114, 1,
+                "哲学ニュースnwk",
+                URL("http://blog.livedoor.jp/nwknews/atom.xml")) )
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 115,1,
+                "コピペ情報局",
+                URL("http://news.2chblog.jp/index.rdf")) )
+            // RSS 1.0
+            // 2ch
+            urlLst.add( URLData( 116, 1,
+                "V速ニュップ",
+                URL("http://www.vsnp.net/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 117, 1,
+                "カオスちゃんねる",
+                URL("http://chaos2ch.com/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 118, 1,
+                "まとめたニュース",
+                URL("http://matometanews.com/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 119, 1,
+                "BIPブログ",
+                URL("http://bipblog.com/index.rdf")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 120, 1,
+                "勝つる2chまとめブログ",
+                URL("http://katuru2ch.blog12.fc2.com/?xml")) )
+            // RSS ??
+            // 2ch
+            urlLst.add( URLData( 121, 1,
+                "お料理速報",
+                URL("http://oryouri.2chblog.jp/index.rdf")) )
+            // Atom
+            // 2ch
+            urlLst.add( URLData( 122, 1,
+                "ライフハックちゃんねる弐式",
+                URL("http://lifehack2ch.livedoor.biz/atom.xml")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 123, 1,
+                "マネーライフ2ch",
+                URL("http://money-life.doorblog.jp/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 124, 1,
+                "2chコピペ保存道場",
+                URL("http://2chcopipe.com/index.rdf")) )
+            // Atom 0.3
+            // 2ch
+            urlLst.add( URLData( 125, 1,
+                "ガハろぐNewsヽ(･ω･)/ｽﾞｺｰ",
+                URL("http://gahalog.2chblog.jp/atom.xml")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 126, 1,
+                "ちゃんねるZ",
+                URL("http://channelz.blog.fc2.com/?xml=")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 127, 1,
+                "かるかんタイムズ",
+                URL("http://karukantimes.com/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 128, 1,
+                "暇つぶしニュース",
+                URL("http://blog.livedoor.jp/rbkyn844/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 129, 1,
+                "ネギ速",
+                URL("http://www.negisoku.com/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 130, 1,
+                "登山ちゃんねる",
+                URL("http://tozanchannel.blog.jp/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 131, 1,
+                "アウトドアまとめ",
+                URL("http://outdoormatome.com/atom.xml")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 132, 1,
+                "不思議.net",
+                URL("http://world-fusigi.net/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 133, 1,
+                "歴史的速報",
+                URL("http://blog.livedoor.jp/waruneko00326-002/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 134, 1,
+                "IT速報",
+                URL("http://blog.livedoor.jp/itsoku/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 135, 1,
+                "理系ニュース",
+                URL("http://rikeinews.blog.jp/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 136, 1,
+                "明日は何を食べようか",
+                URL("http://gfoodd.com/feed/")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 137, 1,
+                "うしみつ",
+                URL("http://usi32.com/index.rdf")) )
+            // ??
+            // 2ch
+            urlLst.add( URLData( 138, 1,
+                "2ちゃんねるまとめのまとめ",
+                URL("https://2chmm.com/atom.xml")) )
+
+
+
             // RSS 1.0
             // 2ch
             urlLst.add( URLData( 103, 1,
@@ -83,16 +266,6 @@ data class URLData(
                     URL("http://blog.livedoor.jp/insidears/index.rdf")) )
             // RSS 1.0
             // 2ch
-            urlLst.add( URLData( 105, 1,
-                    "アルファルファモザイク",
-                    URL("http://alfalfalfa.com/index.rdf")) )
-            // RSS 1.0
-            // 2ch
-            urlLst.add( URLData( 106, 1,
-                    "コピペ情報局",
-                    URL("http://news.2chblog.jp/index.rdf")) )
-            // RSS 1.0
-            // 2ch
             urlLst.add( URLData( 107, 1,
                     "watch@2チャンネル",
                     URL("http://watch2ch.2chblog.jp/index.rdf")) )
@@ -101,36 +274,16 @@ data class URLData(
             urlLst.add( URLData( 108, 1,
                     "まとめたニュース",
                     URL("http://matometanews.com/index.rdf")) )
-            // Atom 0.3
-            // 2ch
-            urlLst.add( URLData( 109, 1,
-                    "ガハろぐNewsヽ(･ω･)/ｽﾞｺｰ",
-                    URL("http://gahalog.2chblog.jp/atom.xml")) )
             // RSS 1.0
             // 2ch
             urlLst.add( URLData( 110, 1,
                     "まめ速",
                     URL("http://mamesoku.com/index.rdf")) )
-            // RSS 1.1
-            // 2ch
-            urlLst.add( URLData( 111, 1,
-                    "VIPPERな俺",
-                    URL("http://blog.livedoor.jp/news23vip/atom.xml")) )
             // Atom
             // 2ch
             urlLst.add( URLData( 112, 1,
                     "妹はVIPPER",
                     URL("http://vipsister23.com/index.rdf")) )
-            // RSS 1.0
-            // 2ch
-            urlLst.add( URLData( 113, 1,
-                    "働くモノニュース",
-                    URL("http://workingnews.blog117.fc2.com/?xml")) )
-            // RSS 1.0
-            // 2ch
-            urlLst.add( URLData( 114, 1,
-                    "キニ速",
-                    URL("http://blog.livedoor.jp/kinisoku/index.rdf")) )
             // Atom
             // 2ch
             urlLst.add( URLData( 115, 1,
@@ -142,16 +295,6 @@ data class URLData(
             //urlLst.add( URLData( 116, 1,
             //        "すくいぬ",
             //        URL("http://suiseisekisuisui.blog107.fc2.com/?xml")) )
-            // Atom
-            // 2ch
-            urlLst.add( URLData( 117, 1,
-                    "ライフハックちゃんねる弐式",
-                    URL("http://lifehack2ch.livedoor.biz/atom.xml")) )
-            // Atom
-            // 2ch
-            urlLst.add( URLData( 118, 1,
-                    "哲学ニュースnwk",
-                    URL("http://blog.livedoor.jp/nwknews/atom.xml")) )
             // RSS 1.0
             // 2ch
             // 2020/05/10以降更新なし
